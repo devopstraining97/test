@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Anmeldung</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/login.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+</head>
+
+
+  <body class="login-page">
+  <input type="text" id="base_url" value="{{base_url}}" hidden>
+
+    <main>
+
+      <div class="login-block">
+        <h1>Beim Account anmelden</h1>
+
+        <form id="form" method="post">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+              <input type="text" class="form-control rounded" placeholder="Username" id="username" required>
+            </div>
+          </div>
+
+          <hr class="hr-xs">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope ti-email"></i></span>
+              <input type="password" class="form-control rounded" placeholder="Password" id="password" required>
+            </div>
+          </div>
+
+          <hr class="hr-xs">
+          <p id="output" class="p-3 h6"></p>
+          <button class="btn btn-primary btn-block" type="submit">Login</button>
+
+          <div class="login-footer">
+            <h6>Oder registrieren mit</h6>
+            <ul class="social-icons">
+              <li><a class="facebook" href="{{ url_for('signup') }}"><i class="fa fa-facebook"></i>Registrieren</a></li>
+            </ul>
+          </div>
+
+        </form>
+      </div>
+
+    </main>
+
+    <script>
+     $('#form').on('submit', function(e){
+
+     e.preventDefault();
+     var base_url = document.getElementById("base_url").value;
+
+       $.ajax({
+            type : "POST",
+            url: base_url +'/login/',
+            data: {
+             username : $('#username').val(),
+             password : $('#password').val(),
+
+             dataType: "json",
+
+            },
+
+            success: function(data){
+                window.location.replace(base_url);
+            },
+            error: function(data) {
+                document.getElementById("output").innerHTML  = "Falsche Email oder Passwort!";
+            }
+
+        });
+
+
+             });
+</script>
+</body>
+</html>

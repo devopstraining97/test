@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Login Page</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/login.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+</head>
+
+
+  <body class="login-page">
+  <input type="text" id="base_url" value="{{base_url}}" hidden>
+
+    <main>
+
+      <div class="login-block">
+        <h1>Signup to create account</h1>
+
+        <form id="form" method="post">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+              <input type="text" class="form-control rounded" placeholder="Username" id="username" required>
+            </div>
+          </div>
+
+          <hr class="hr-xs">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope ti-email"></i></span>
+              <input type="email" class="form-control rounded" placeholder="Your email address" id="email" required>
+            </div>
+          </div>
+
+          <hr class="hr-xs">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+              <input type="password" class="form-control rounded" placeholder="Choose a password" id="password" required>
+            </div>
+          </div>
+          <p id="output" class="p-3 h6"></p>
+          <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+
+          <div class="login-footer">
+            <h6 class="text-dark">Or Already have Account? </h6>
+            <ul class="social-icons">
+              <li><a class="facebook" href="{{ url_for('login') }}"><i class="fa fa-facebook"></i>Login</a></li>
+            </ul>
+          </div>
+
+        </form>
+      </div>
+
+    </main>
+
+  <script>
+     $('#form').on('submit', function(e){
+
+     e.preventDefault();
+     var base_url = document.getElementById("base_url").value;
+
+       $.ajax({
+            type : "POST",
+            url: base_url +'/create-user/',
+            data: {
+             username : $('#username').val(),
+             email : $('#email').val(),
+             password : $('#password').val(),
+
+             dataType: "json",
+
+            },
+
+            success: function(data){
+
+              document.getElementById("output").innerHTML  = "User Signup Successfully";
+              document.getElementById("username").value  = "";
+              document.getElementById("email").value  = "";
+              document.getElementById("password").value  = "";
+
+            },
+            error: function(data) {
+                document.getElementById("output").innerHTML  = "username or email already exists";
+            }
+
+
+        });
+
+
+             });
+</script>
+</body>
+</html>
+
+

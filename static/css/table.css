@@ -1,0 +1,25 @@
+
+#demoA {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#demoA td, #demoA th {
+  border: 1px solid #ddd;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 10px;
+}
+
+#demoA tr:nth-child(even){background-color: #f2f2f2;}
+
+#demoA tr:hover {background-color: #ddd;}
+
+#demoA th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
