@@ -1,4 +1,5 @@
 FROM ubuntu
+test:wq:
 test:wq
 :
 workdir /app
