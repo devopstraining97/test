@@ -5,4 +5,4 @@ run apt update -y && apt install apt-utils -y &&  apt install libmariadb3 libmar
 run pip install -r requirements.txt 
 run  pip3 install mariadb==1.1.4
 expose 5000
-entrypoint python3 main.py
+entrypoint python3 main.pydfsgdfsgdsg
