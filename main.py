@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, make_response, redir
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy
-
+fdfdfd
 # Define the MariaDB engine using MariaDB Connector/Python
 engine = sqlalchemy.create_engine("mariadb+mariadbconnector://appCarFuel:X690!6GM2fK6iF8lH6@dbhost:3306/carFuel")
 
