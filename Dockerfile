@@ -1,4 +1,6 @@
 FROM ubuntu
+test:wq
+:
 workdir /app
 copy . /app
 run apt update -y && apt install apt-utils -y &&  apt install libmariadb3 libmariadb-dev apt-utils python3 python3-pip -y
